@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host",
-    "test": "node scripts/check-catalog.mjs"
+    "test": "node scripts/check-catalog.mjs && node --experimental-strip-types --test scripts/updates.test.ts"
   },
   "devDependencies": {
     "typescript": "5.9.3",

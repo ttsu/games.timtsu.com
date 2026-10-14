@@ -11,6 +11,7 @@ export type Game = {
   tagline: string
   categories: string[]
   href: string
+  /** GitHub `owner/name`. Used to tell when the game was pushed after the last click. */
   repo: string
   icon: string
   color: string

@@ -1,0 +1,39 @@
+{
+  "categories": [
+    { "id": "learning", "label": "Learning" },
+    { "id": "action", "label": "Action" },
+    { "id": "building", "label": "Building" }
+  ],
+  "games": [
+    {
+      "id": "mathtactics",
+      "title": "Math vs. Robots",
+      "tagline": "Fire the number that knocks the robot down.",
+      "categories": ["learning"],
+      "href": "https://mathtactics.timtsu.com",
+      "repo": "ttsu/mathtactics",
+      "icon": "icons/apple-touch-icon-180.png",
+      "color": "#2f3e57"
+    },
+    {
+      "id": "corn-utopia",
+      "title": "Corn Utopia",
+      "tagline": "Chomp cobs, scoop kernels, grow big.",
+      "categories": ["action"],
+      "href": "https://cornutopia.timtsu.com",
+      "repo": "ttsu/corn-utopia",
+      "icon": "icons/apple-touch-icon.png",
+      "color": "#9fd36b"
+    },
+    {
+      "id": "bee-happy",
+      "title": "Bee Happy",
+      "tagline": "Build a hive and keep your bees happy.",
+      "categories": ["building"],
+      "href": "https://beehappy.timtsu.com",
+      "repo": "ttsu/bee-happy",
+      "icon": "icon_180.png",
+      "color": "#1b2838"
+    }
+  ]
+}

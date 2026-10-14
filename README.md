@@ -4,8 +4,8 @@ A home-screen shelf for games published from GitHub. Open [games.timtsu.com](htt
 
 ## Add a game
 
-1. Put a square PNG in [`catalog/icons/`](catalog/icons/).
-2. Append an object to `games` in [`catalog/games.json`](catalog/games.json). To use a new category, add it to `categories` first, then list its `id` on the game. A game can belong to more than one category.
+1. Append an object to `games` in [`catalog/games.json`](catalog/games.json). To use a new category, add it to `categories` first, then list its `id` on the game. A game can belong to more than one category.
+2. Set `icon` to the apple-touch icon path on that game's site, such as `icons/apple-touch-icon.png`. It is resolved against `href`. A full `https` URL is fine too, as long as it is on the same site.
 3. Push to `main`. The Pages workflow checks the catalog, builds, and publishes.
 
 Chips show a category only when at least one game uses it.
@@ -18,12 +18,12 @@ Chips show a category only when at least one game uses it.
   "categories": ["learning"],
   "href": "https://mathtactics.timtsu.com",
   "repo": "ttsu/mathtactics",
-  "icon": "mathtactics.png",
+  "icon": "icons/apple-touch-icon-180.png",
   "color": "#2f3e57"
 }
 ```
 
-`npm test` fails if an id is duplicated, a category id is unknown, the icon file is missing, or `href` is not `https`.
+`npm test` fails if an id is duplicated, a category id is unknown, `href` is not `https`, or `icon` does not resolve to an `https` URL on that same site.
 
 ## Develop
 

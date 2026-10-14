@@ -23,15 +23,11 @@ export type Catalog = {
 
 export const catalog: Catalog = catalogJson
 
-const iconUrls = import.meta.glob('../catalog/icons/*.png', {
-  eager: true,
-  query: '?url',
-  import: 'default',
-}) as Record<string, string>
-
-export function iconUrl(filename: string): string {
-  const entry = Object.entries(iconUrls).find(([path]) => path.endsWith(`/${filename}`))
-  return entry?.[1] ?? ''
+/** Icon path or URL on the game's own site, resolved against its href. */
+export function iconUrl(game: Pick<Game, 'href' | 'icon'>): string {
+  const base = new URL(game.href)
+  if (!base.pathname.endsWith('/')) base.pathname += '/'
+  return new URL(game.icon, base).href
 }
 
 /** Categories that have at least one game, in catalog order. */

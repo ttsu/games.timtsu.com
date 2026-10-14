@@ -1,10 +1,15 @@
-import { existsSync, readFileSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const catalogPath = join(root, 'catalog/games.json')
-const iconsDir = join(root, 'catalog/icons')
+
+function resolveIcon(href, icon) {
+  const base = new URL(href)
+  if (!base.pathname.endsWith('/')) base.pathname += '/'
+  return new URL(icon, base)
+}
 
 const errors = []
 
@@ -93,10 +98,20 @@ if (!Array.isArray(catalog.games)) {
     if (typeof game.color !== 'string' || !colorPattern.test(game.color)) {
       fail(`${where}.color must be a #rrggbb color`)
     }
-    if (typeof game.icon !== 'string' || game.icon.includes('/') || game.icon.includes('\\')) {
-      fail(`${where}.icon must be a file name in catalog/icons/`)
-    } else if (!existsSync(join(iconsDir, game.icon))) {
-      fail(`${where}.icon "${game.icon}" is missing from catalog/icons/`)
+    if (typeof game.icon !== 'string' || game.icon.trim() === '') {
+      fail(`${where}.icon must be a path or https URL on the game's site`)
+    } else if (typeof game.href === 'string' && game.href.startsWith('https://')) {
+      let iconUrl
+      try {
+        iconUrl = resolveIcon(game.href, game.icon)
+      } catch {
+        iconUrl = null
+      }
+      if (!iconUrl || iconUrl.protocol !== 'https:') {
+        fail(`${where}.icon must resolve to an https URL`)
+      } else if (iconUrl.origin !== new URL(game.href).origin) {
+        fail(`${where}.icon must be hosted on ${new URL(game.href).origin}`)
+      }
     }
     if (!Array.isArray(game.categories) || game.categories.length === 0) {
       fail(`${where}.categories must list at least one category id`)

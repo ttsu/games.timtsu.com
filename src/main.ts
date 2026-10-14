@@ -108,8 +108,10 @@ function tile(game: {
   icon.alt = ''
   icon.width = 124
   icon.height = 124
-  const src = iconUrl(game.icon)
-  if (src) icon.src = src
+  icon.src = iconUrl(game)
+  icon.addEventListener('error', () => {
+    icon.remove()
+  })
 
   const heading = document.createElement('h2')
   heading.className = 'tile-title'

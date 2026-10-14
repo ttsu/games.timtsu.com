@@ -12,7 +12,7 @@
       "categories": ["learning"],
       "href": "https://mathtactics.timtsu.com",
       "repo": "ttsu/mathtactics",
-      "icon": "mathtactics.png",
+      "icon": "icons/apple-touch-icon-180.png",
       "color": "#2f3e57"
     },
     {
@@ -22,7 +22,7 @@
       "categories": ["action"],
       "href": "https://cornutopia.timtsu.com",
       "repo": "ttsu/corn-utopia",
-      "icon": "corn-utopia.png",
+      "icon": "icons/apple-touch-icon.png",
       "color": "#9fd36b"
     },
     {
@@ -32,7 +32,7 @@
       "categories": ["building"],
       "href": "https://beehappy.timtsu.com",
       "repo": "ttsu/bee-happy",
-      "icon": "bee-happy.png",
+      "icon": "icon_180.png",
       "color": "#1b2838"
     }
   ]
